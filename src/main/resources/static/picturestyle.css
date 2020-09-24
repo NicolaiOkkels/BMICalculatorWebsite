@@ -1,0 +1,11 @@
+body{
+    background-image: url("images/standard-background.jpg");
+    background-attachment: fixed;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

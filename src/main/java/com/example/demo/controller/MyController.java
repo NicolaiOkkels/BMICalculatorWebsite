@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.service.Calculator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,9 @@ public class MyController {
 
     @PostMapping("/calculate")
     public String calculate(@RequestParam double weight, @RequestParam double heigthInCentimenters, Model model) {
-        double heightInMeters = heigthInCentimenters / 100;
-        double bmi = weight / Math.pow(heightInMeters, 2);
-        double roundOff = Math.round(bmi * 100.0) / 100.0;
-        model.addAttribute("calc", roundOff); // key (calc)-value (num3)
+        Calculator calculator = new Calculator();
+        double bmi = calculator.bmiCalculator(weight,heigthInCentimenters);
+        model.addAttribute("calc", bmi); // key (calc)-value (bmi)
         return "result";
     }
 
